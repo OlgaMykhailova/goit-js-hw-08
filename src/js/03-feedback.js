@@ -7,13 +7,12 @@ const formDataInput = {};
 
 fillingInput();
 
-formEl.addEventListener('input', onInput);
+formEl.addEventListener('input', throttle(onInput, 500));
 formEl.addEventListener('submit', onSubmitClick);
 
 function onInput(event) {
   formDataInput[event.target.name] = event.target.value;
   localStorage.setItem('feedback-form-state', JSON.stringify(formDataInput));
-  console.log(formDataInput);
 }
 
 function onSubmitClick(event) {
@@ -26,8 +25,7 @@ function onSubmitClick(event) {
 function fillingInput() {
   if (JSON.parse(localStorage.getItem('feedback-form-state'))) {
     const savedInput = JSON.parse(localStorage.getItem('feedback-form-state'));
-    console.log(savedInput);
-
+   
     if (savedInput.email) {
       inputEl.value = savedInput.email;
     }
