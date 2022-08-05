@@ -17,15 +17,19 @@ function onInput(event) {
 
 function onSubmitClick(event) {
   event.preventDefault();
-  event.currentTarget.reset();
-  console.log(localStorage.getItem('feedback-form-state'));
-  localStorage.removeItem('feedback-form-state');
+  if (!inputEl.value || !textareaEl.value) {
+    alert('Необхідно заповнити всі поля форми');
+  } else {
+    event.currentTarget.reset();
+    console.log(localStorage.getItem('feedback-form-state'));
+    localStorage.removeItem('feedback-form-state');
+  }
 }
 
 function fillingInput() {
   if (JSON.parse(localStorage.getItem('feedback-form-state'))) {
     const savedInput = JSON.parse(localStorage.getItem('feedback-form-state'));
-   
+
     if (savedInput.email) {
       inputEl.value = savedInput.email;
     }
