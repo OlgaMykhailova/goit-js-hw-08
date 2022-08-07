@@ -26,7 +26,7 @@ function onSubmitClick(event) {
     alert('Необхідно заповнити всі поля форми');
   } else {
     event.currentTarget.reset();
-    console.log(localStorage.getItem(STORAGE_KEY));
+    console.log(formDataInput);
     localStorage.removeItem(STORAGE_KEY);
   }
 }
