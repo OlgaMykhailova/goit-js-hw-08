@@ -13,7 +13,7 @@ formEl.addEventListener('input', throttle(onInput, 500));
 formEl.addEventListener('submit', onSubmitClick);
 
 function onInput(event) {
-  console.log(event.target.value);
+  
   if (event.target.value) {
     formDataInput[event.target.name] = event.target.value;
   }
